@@ -15,7 +15,7 @@ public class Player {
     // methods so the player can move to different rooms
     public void goNorth(){
         if (currentRoom.getNorth() !=null){
-            currentRoom = currentRoom.getNorth();
+            currentRoom = currentRoom.getNorth(); //Bruger getter metode til at sette ny currentRoom til den, som er North fra currentRoom
             System.out.println("going north");
             currentRoomPrint();
         } else {
