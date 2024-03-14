@@ -59,16 +59,6 @@ public class UserInterface {
         System.out.println("You find yourself at the entrance of a dark tomb. You don't remember anything");
     }
 
-    /*public void newGame() {
-        System.out.println("Press 1 to start a new game");
-        int newGame = 1;
-        int inputNewGame = scanner.nextInt();
-        if (inputNewGame == newGame) {
-            System.out.println("You find yourself at the entrance of a Dark tomb, you dont remember anything");
-        } else {
-            System.out.println("Please enter 1 to start new game\"");
-        }
-    }*/
 
     //Split metode med UI
     public void userInput() {
@@ -86,6 +76,7 @@ public class UserInterface {
                     System.out.println("LOOK            - Take another look around the room.");
                     System.out.println("TAKE <item>     - Pick up an object from a room (e.g., 'take club').");
                     System.out.println("DROP <item>     - Drop an item inside a room (e.g., 'drop club').");
+                    System.out.println("EAT <item>      - Consume an item in your inventory for health (e.g., 'eat apple').");
                     System.out.println("INVENTORY       - View items in your inventory.");
                     System.out.println("EXIT            - Exit the program.");
                 }
@@ -100,6 +91,7 @@ public class UserInterface {
                 case "exit" -> {
                     System.exit(0);
                 }
+                default -> System.out.println("Invalid input");
             }
         }
         if (commands.length == 2) {
@@ -138,6 +130,23 @@ public class UserInterface {
                         System.out.println("Dropped '" + dropItem + "'");
                     } else {
                         System.out.println("There is no " + commands[1] + " in your inventory");
+                    }
+                }
+                case "eat" -> {
+                    ReturnMessage result = adventure.eatItem(commands[1]);
+                    switch (result) {
+                        case OK -> {
+                            System.out.println("Eating " + commands[1] + "!");
+                            System.out.println("Om nom nom...");
+                            System.out.println("You now have " + adventure.getPlayer().getHealth() + " hp");
+                        }
+                        case NOT_OK -> {
+                            System.out.println("You can't eat " + commands[1]);
+
+                        }
+                        case NOT_FOUND -> {
+                            System.out.println("No " + commands[1] + " was found in your inventory or the room");
+                        }
                     }
                 }
             }

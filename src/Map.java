@@ -22,15 +22,18 @@ public class Map {
         room1.setSouth(room4);
         //adder et item direkte
         room1.addItem(new Item("torch", "A long torch"));
+        room1.addItem(new Food("banana", "A healthy looking banana", 10));
+        room1.addItem(new Weapon("AK-47", "An AK-47, a military level machine gun with a few rounds of ammo left", -30));
 
         // room 2
         room2.setEast(room3);
         room2.setWest(room1);
+        room2.addItem(new Food("potion", "A magical potion with a strange substance in it", -10));
 
         // room 3
         room3.setWest(room2);
         room3.setSouth(room6);
-        room3.addItem(new Item("knife", "A dull knife with a rusty blade"));
+        room3.addItem(new Weapon("knife", "A dull knife with a rusty blade", -10));
 
         // room 4
         room4.setNorth(room1);

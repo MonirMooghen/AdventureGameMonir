@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
+    private int health;
 
     //constructor that sets the room where the player spawns.
     public Player (Room firstRoom){
         this.currentRoom = firstRoom;
         this.inventory = new ArrayList<>();
+        this.health = 70;
     }
 
     // methods so the player can move to different rooms
@@ -74,6 +76,15 @@ public class Player {
         }
         return null;
     }
+
+//    public Item findFood(String shortName) {
+//        for (Item item : (inventory || currentRoom))  {
+//            if (item.getShortName().equalsIgnoreCase(shortName)) {
+//                return item;
+//        } return null;
+//    }
+//    }
+
     public void addItem(Item item) {
         inventory.add(item);
     }
@@ -96,30 +107,27 @@ public class Player {
         return pickedItem;
     }
 
-    //makes the move methods work with string input.
-    public void move(String input) {
-        switch (input.toLowerCase()) {
-            case "go north":
-            case "north":
-            case "n":
-                goNorth();
-                break;
-            case "go south":
-            case "south":
-            case "s":
-                goSouth();
-                break;
-            case "go west":
-            case "west":
-            case "w":
-                goWest();
-                break;
-            case "go east":
-            case "east":
-            case "e":
-                goEast();
-                break;
-        }
+    public int getHealth() {
+        return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+public ReturnMessage eatItem(String shortName) {
+    Item item = findItemInInventory(shortName);
+    if (item == null) {
+        return ReturnMessage.NOT_FOUND;
+    } else if (item instanceof Food food) {
+        removeItem(item);
+        health+=food.getHP();
+        return ReturnMessage.OK;
+    } else {
+        return ReturnMessage.NOT_OK;
+    }
+
+
+
+}
 }

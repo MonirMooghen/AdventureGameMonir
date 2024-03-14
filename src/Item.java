@@ -1,6 +1,6 @@
 public class Item {
-    private String longName;
-    private String shortName;
+    protected String longName;
+    protected String shortName;
 
     //****CONSTRUCTOR***** (Opskriften på objektet)
     public Item(String shortName, String longName) {

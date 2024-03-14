@@ -68,4 +68,9 @@ public class Adventure {
     public Item dropItem(String shortName) {
         return player.dropItem(shortName);
     }
+
+    public ReturnMessage eatItem(String shortName) {
+        return player.eatItem(shortName);
+    }
+
 }
