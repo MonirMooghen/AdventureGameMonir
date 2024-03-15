@@ -1,5 +1,5 @@
-public class Weapon extends Item {
-    private int damage;
+public abstract class Weapon extends Item {
+    public int damage;
 
     public Weapon(String shortName, String longName, int damage) {
         super(shortName, longName);
@@ -9,7 +9,6 @@ public class Weapon extends Item {
         return damage;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
+    abstract int getAmmo();
+
 }

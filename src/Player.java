@@ -6,15 +6,15 @@ public class Player {
     private int health;
 
     //constructor that sets the room where the player spawns.
-    public Player (Room firstRoom){
+    public Player(Room firstRoom) {
         this.currentRoom = firstRoom;
         this.inventory = new ArrayList<>();
         this.health = 70;
     }
 
     // methods so the player can move to different rooms
-    public void goNorth(){
-        if (currentRoom.getNorth() !=null){
+    public void goNorth() {
+        if (currentRoom.getNorth() != null) {
             currentRoom = currentRoom.getNorth(); //Bruger getter metode til at sette ny currentRoom til den, som er North fra currentRoom
             System.out.println("going north");
             currentRoomPrint();
@@ -22,8 +22,9 @@ public class Player {
             notPossible();
         }
     }
-    public void goSouth(){
-        if (currentRoom.getSouth() !=null){
+
+    public void goSouth() {
+        if (currentRoom.getSouth() != null) {
             currentRoom = currentRoom.getSouth();
             System.out.println("going south");
             currentRoomPrint();
@@ -31,8 +32,9 @@ public class Player {
             notPossible();
         }
     }
-    public void goEast(){
-        if (currentRoom.getEast() !=null){
+
+    public void goEast() {
+        if (currentRoom.getEast() != null) {
             currentRoom = currentRoom.getEast();
             System.out.println("going east");
             currentRoomPrint();
@@ -40,8 +42,9 @@ public class Player {
             notPossible();
         }
     }
-    public void goWest(){
-        if (currentRoom.getWest() !=null){
+
+    public void goWest() {
+        if (currentRoom.getWest() != null) {
             currentRoom = currentRoom.getWest();
             System.out.println("going west");
             currentRoomPrint();
@@ -49,6 +52,7 @@ public class Player {
             notPossible();
         }
     }
+
     //current room name and description
     public void currentRoomPrint() {
         System.out.println(currentRoom.getName() + " " + currentRoom.getDescription());
@@ -61,6 +65,7 @@ public class Player {
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
@@ -68,6 +73,7 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+
     private Item findItemInInventory(String shortName) {
         for (Item item : inventory) {
             if (item.getShortName().equalsIgnoreCase(shortName)) {
@@ -92,6 +98,7 @@ public class Player {
     public void removeItem(Item item) {
         inventory.remove(item);
     }
+
     public Item dropItem(String shortName) {
         Item pickedItem = findItemInInventory(shortName);
         if (pickedItem != null) {
@@ -115,19 +122,29 @@ public class Player {
         this.health = health;
     }
 
-public ReturnMessage eatItem(String shortName) {
-    Item item = findItemInInventory(shortName);
-    if (item == null) {
-        return ReturnMessage.NOT_FOUND;
-    } else if (item instanceof Food food) {
-        removeItem(item);
-        health+=food.getHP();
-        return ReturnMessage.OK;
-    } else {
-        return ReturnMessage.NOT_OK;
+    public ReturnMessage eatItem(String shortName) {
+        Item item = findItemInInventory(shortName);
+        if (item == null) {
+            return ReturnMessage.NOT_FOUND;
+        } else if (item instanceof Food food) {
+            removeItem(item);
+            health += food.getHP();
+            return ReturnMessage.OK;
+        } else {
+            return ReturnMessage.NOT_OK;
+        }
     }
 
-
-
-}
-}
+        public ReturnMessage equipWeapon(String shortName){
+            Item equippedWeapon = findItemInInventory(shortName);
+            if (equippedWeapon == null) {
+                return ReturnMessage.NOT_FOUND;
+            } else if (equippedWeapon instanceof Weapon) {
+                currentWeapon = (Weapon)equippedWeapon;
+                inventory.remove(equippedWeapon);
+                return ReturnMessage.OK;
+            } else {
+                return ReturnMessage.NOT_OK;
+            }
+        }
+    }

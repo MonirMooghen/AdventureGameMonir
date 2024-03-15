@@ -73,4 +73,5 @@ public class Adventure {
         return player.eatItem(shortName);
     }
 
+//    public ReturnMessage equip
 }

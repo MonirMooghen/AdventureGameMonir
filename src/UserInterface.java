@@ -77,6 +77,7 @@ public class UserInterface {
                     System.out.println("TAKE <item>     - Pick up an object from a room (e.g., 'take club').");
                     System.out.println("DROP <item>     - Drop an item inside a room (e.g., 'drop club').");
                     System.out.println("EAT <item>      - Consume an item in your inventory for health (e.g., 'eat apple').");
+                    System.out.println("EQUIP <weapon>  - Equips a weapon from your inventory (e.g., 'equip AK-47");
                     System.out.println("INVENTORY       - View items in your inventory.");
                     System.out.println("EXIT            - Exit the program.");
                 }
@@ -148,7 +149,24 @@ public class UserInterface {
                             System.out.println("No " + commands[1] + " was found in your inventory or the room");
                         }
                     }
-                }
+//                    case "equip" -> { //Skal rettes til at være en rigtig command
+//                        ReturnMessage result = adventure.eatItem(commands[1]);
+//                        switch (result) {
+//                            case OK -> {
+//                                System.out.println("Eating " + commands[1] + "!");
+//                                System.out.println("Om nom nom...");
+//                                System.out.println("You now have " + adventure.getPlayer().getHealth() + " hp");
+//                            }
+//                            case NOT_OK -> {
+//                                System.out.println("You can't eat " + commands[1]);
+//
+//                            }
+//                            case NOT_FOUND -> {
+//                                System.out.println("No " + commands[1] + " was found in your inventory or the room");
+//
+//                            }
+//                        }
+//                    }
             }
         }
     }
