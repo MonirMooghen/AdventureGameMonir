@@ -4,6 +4,7 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory;
     private int health;
+    private Weapon currentWeapon;
 
     //constructor that sets the room where the player spawns.
     public Player(Room firstRoom) {
@@ -121,6 +122,11 @@ public class Player {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
 
     public ReturnMessage eatItem(String shortName) {
         Item item = findItemInInventory(shortName);
