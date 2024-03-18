@@ -141,16 +141,22 @@ public class Player {
         }
     }
 
-        public ReturnMessage equipWeapon(String shortName){
-            Item equippedWeapon = findItemInInventory(shortName);
-            if (equippedWeapon == null) {
-                return ReturnMessage.NOT_FOUND;
-            } else if (equippedWeapon instanceof Weapon) {
-                currentWeapon = (Weapon)equippedWeapon;
-                inventory.remove(equippedWeapon);
-                return ReturnMessage.OK;
+    public ReturnMessage equipWeapon(String shortName){
+        Item item = findItemInInventory(shortName);
+        if (item == null) {
+            return ReturnMessage.NOT_FOUND;
+        } else if (item instanceof Weapon) {
+            if (((Weapon) item).hasAmmo) {
+                currentWeapon = (Weapon) item;
+                inventory.remove(item);
+                return ReturnMessage.OK_AMMO;
             } else {
-                return ReturnMessage.NOT_OK;
+                currentWeapon = (Weapon) item;
+                inventory.remove(item);
+                return ReturnMessage.OK;
             }
+        } else {
+            return ReturnMessage.NOT_OK;
         }
     }
+}

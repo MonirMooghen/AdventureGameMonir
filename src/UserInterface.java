@@ -149,24 +149,29 @@ public class UserInterface {
                             System.out.println("No " + commands[1] + " was found in your inventory or the room");
                         }
                     }
-//                    case "equip" -> { //Skal rettes til at være en rigtig command
-//                        ReturnMessage result = adventure.eatItem(commands[1]);
-//                        switch (result) {
-//                            case OK -> {
-//                                System.out.println("Eating " + commands[1] + "!");
-//                                System.out.println("Om nom nom...");
-//                                System.out.println("You now have " + adventure.getPlayer().getHealth() + " hp");
-//                            }
-//                            case NOT_OK -> {
-//                                System.out.println("You can't eat " + commands[1]);
-//
-//                            }
-//                            case NOT_FOUND -> {
-//                                System.out.println("No " + commands[1] + " was found in your inventory or the room");
-//
-//                            }
-//                        }
-//                    }
+                }
+                    case "equip" -> {
+                        ReturnMessage result = adventure.equipWeapon(commands[1]);
+                        switch (result) {
+                            case OK -> {
+                                System.out.println("Equipping " + commands[1] + "!");
+                                System.out.println("You are now holding " + adventure.getPlayer().getCurrentWeapon());
+//                                if (adventure.getPlayer().getCurrentWeapon().remainingUses() >0) {
+//                                    System.out.println("The weapon has " + adventure.getPlayer().getCurrentWeapon().remainingUses() + " uses left");
+//                                } else if (adventure.getPlayer().getCurrentWeapon(). && adventure.getPlayer().getCurrentWeapon().getAmmo() ==0) {
+//                                    System.out.println("This weapon has no ammo left");
+//                                }
+                            }
+                            case NOT_OK -> {
+                                System.out.println("You can't equip " + commands[1]);
+
+                            }
+                            case NOT_FOUND -> {
+                                System.out.println("No " + commands[1] + " was found in your inventory");
+
+                            }
+                        }
+                    }
             }
         }
     }

@@ -1,15 +1,14 @@
 public class MeleeWeapon extends Weapon {
 
     public MeleeWeapon(String shortName, String longName, int damage) {
-        super(shortName, longName, damage);
-    }
-
-    public boolean hasAmmo(){
-        return true;
+        super(shortName, longName, damage, false);
     }
 
     @Override
-    public int getAmmo() {
-        return 0;
+    public int remainingUses(){
+        return 1;
+    }
+    @Override
+    public void useWeapon() {
     }
 }

@@ -73,5 +73,7 @@ public class Adventure {
         return player.eatItem(shortName);
     }
 
-//    public ReturnMessage equip
+    public ReturnMessage equipWeapon(String shortName) {
+        return player.equipWeapon(shortName);
+    }
 }
