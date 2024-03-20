@@ -7,6 +7,7 @@ public class Room {
     private Room east;
     private Room west;
     private ArrayList<Item> itemList = new ArrayList<>();
+    private ArrayList<Enemy> enemyList = new ArrayList<>();
 
     // Adds name and descriptions to new rooms
     public Room(String name, String description) {
@@ -88,5 +89,18 @@ public class Room {
         return itemToRemove;
     }
 
+    public void addEnemy(Enemy enemy) {
+        enemyList.add(enemy);
+    }
+
+    public void printEnemyList(){
+        for (Enemy enemy : enemyList) {
+            System.out.println(enemy);
+        }
+    }
+
+    public ArrayList<Enemy> getEnemyList() {
+        return enemyList;
+    }
 }
 

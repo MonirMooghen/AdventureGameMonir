@@ -165,10 +165,34 @@ public class Player {
         if (currentWeapon == null) { //Hvis man ikke har equipped våben
             return ReturnMessage.NOT_FOUND;
         }
-        if (currentWeapon.isRangedWeapon) {
+        if (currentRoom.) {
             if (currentWeapon.remainingUses() > 0) {
                 currentWeapon.useWeapon();
                 return ReturnMessage.OK_AMMO;
+                //if(Enemy.isEnemyDead)
+                //currentWeapon.damage
+            } else {
+                return ReturnMessage.NOT_OK;
+                //sout "Der er ikke mere ammo i dit våben"
+            }
+        } else {
+            return ReturnMessage.OK; //hvis man har et melee weapon
+            }
+        }
+
+
+    public ReturnMessage attack() {
+        if (currentWeapon == null) { //Hvis man ikke har equipped våben
+            return ReturnMessage.NOT_FOUND;
+        }
+        if (currentRoom.)
+            if (currentWeapon.isRangedWeapon) {
+            if (currentWeapon.remainingUses() > 0) {
+                currentWeapon.useWeapon();
+                return ReturnMessage.OK_AMMO;
+                //if(Enemy.isEnemyDead)
+                //currentWeapon.damage
+
             } else {
                 return ReturnMessage.NOT_OK;
                 //sout "Der er ikke mere ammo i dit våben"
@@ -176,5 +200,5 @@ public class Player {
         } else {
             return ReturnMessage.OK; //hvis man har et mellee weapon
         }
-        }
+    }
     }

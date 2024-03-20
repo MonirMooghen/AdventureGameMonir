@@ -13,7 +13,7 @@ public class Enemy { //Parametre - fields?
         this.weapon = weapon;
     }
 
-    public int getHealth(){
+    public int getHealth() {
         return health;
     }
 
@@ -21,15 +21,12 @@ public class Enemy { //Parametre - fields?
         this.health = health;
     }
 
-    public boolean isEnemyDead() {
-        if(getHealth() <= 0){
-            return true;
-        } else {
-         return false;
-        }
+    @Override
+    public String toString() {
+        return longName;
     }
 
-    //Samme som ovenstående, men simplere
-//    public boolean isEnemyDead() {
-//        return getHealth() <= 0;
+    public boolean isEnemyDead() {
+        return getHealth() <= 0;
     }
+}

@@ -22,9 +22,9 @@ public class Item {
         return shortName;
     }
 
-    public String getLongName() {
-        return longName;
-    }
+//    public String getLongName() {
+//        return longName;
+//    }
     @Override
     public String toString() {
         return longName;

@@ -24,12 +24,13 @@ public class Map {
         room1.addItem(new Item("torch", "A long torch"));
         room1.addItem(new Food("banana", "A healthy looking banana", 10));
         room1.addItem(new RangedWeapon("AK-47", "An AK-47, a military level machine gun with a few rounds of ammo left", -15, 2));
-        room1.addItem(new MeleeWeapon("sword", "a long sword with a golden handle", -20));
+        room1.addItem(new MeleeWeapon("sword", "A long sword with a golden handle", -20));
 
         // room 2
         room2.setEast(room3);
         room2.setWest(room1);
         room2.addItem(new Food("potion", "A magical potion with a strange substance in it", -10));
+        room2.addEnemy(new Enemy("skeleton", "A gross looking skeleton holding a pistol", 50, new RangedWeapon("Pistol", "An old pistol", 7, 12)));
 
         // room 3
         room3.setWest(room2);
@@ -43,7 +44,7 @@ public class Map {
 
         // room 5
         room5.setSouth(room8);
-
+        room5.addEnemy(new Enemy("ghost bear", "a ghost bear with no eyes is approaching while bearing", 50, new MeleeWeapon("claws", "claws that scratch", 50)));
 
         // room 6
         room6.setNorth(room3);

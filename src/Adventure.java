@@ -80,4 +80,8 @@ public class Adventure {
     public ReturnMessage attack(){
         return player.attack();
     }
+
+    public void printEnemyList(){
+        getCurrentRoom().printEnemyList();
+    }
 }

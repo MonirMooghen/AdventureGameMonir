@@ -84,6 +84,8 @@ public class UserInterface {
                 case "look" -> {
                     System.out.println("On the floor you see: ");
                     adventure.printItemList();
+                    System.out.println("In the room you also notice: ");
+                    adventure.printEnemyList();
 
                 }
                 case "inventory" -> {
