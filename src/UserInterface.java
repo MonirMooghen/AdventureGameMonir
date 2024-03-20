@@ -89,11 +89,30 @@ public class UserInterface {
                 case "inventory" -> {
                     System.out.println(adventure.getPlayer().getInventory());
                 }
+                case "attack" -> {
+                    ReturnMessage result = adventure.attack();
+                    switch (result) {
+                        case OK -> {
+                            System.out.println("Attacking enemy with melee weapon");
+                        }
+                        case NOT_OK -> {
+                            System.out.println("Your " + adventure.getPlayer().getCurrentWeapon() + " has run out of ammo!");
+                        }
+                        case NOT_FOUND -> {
+                            System.out.println("No weapon equipped!");
+                        }
+                        case OK_AMMO -> {
+                            System.out.println("Enemy attacked!");
+                            System.out.println("You now have " + adventure.getPlayer().getCurrentWeapon().remainingUses() + " uses left");
+                        }
+                    }
+                }
                 case "exit" -> {
                     System.exit(0);
                 }
                 default -> System.out.println("Invalid input");
             }
+
         }
         if (commands.length == 2) {
             switch (commands[0]) {
@@ -156,36 +175,41 @@ public class UserInterface {
                             case OK -> {
                                 System.out.println("Equipping " + commands[1] + "!");
                                 System.out.println("You are now holding " + adventure.getPlayer().getCurrentWeapon());
-//                                if (adventure.getPlayer().getCurrentWeapon().remainingUses() >0) {
-//                                    System.out.println("The weapon has " + adventure.getPlayer().getCurrentWeapon().remainingUses() + " uses left");
-//                                } else if (adventure.getPlayer().getCurrentWeapon(). && adventure.getPlayer().getCurrentWeapon().getAmmo() ==0) {
-//                                    System.out.println("This weapon has no ammo left");
-//                                }
+                            }
+                            case OK_AMMO -> {
+                                System.out.println("Equipping " + commands[1] + "!");
+                                System.out.println("You are now holding " + adventure.getPlayer().getCurrentWeapon());
+                                if (adventure.getPlayer().getCurrentWeapon().remainingUses() > 0) {
+                                    System.out.println("The weapon has " + adventure.getPlayer().getCurrentWeapon().remainingUses() + " uses left");
+                                } else {
+//                                (adventure.getPlayer().getCurrentWeapon(). && adventure.getPlayer().getCurrentWeapon().getAmmo() ==0) {
+                                    System.out.println("This weapon has no ammo left");
+                                }
                             }
                             case NOT_OK -> {
                                 System.out.println("You can't equip " + commands[1]);
-
                             }
                             case NOT_FOUND -> {
                                 System.out.println("No " + commands[1] + " was found in your inventory");
-
                             }
                         }
                     }
+                }
             }
         }
-    }
 
     public void menuText() {
         System.out.println("***** Menu *****");
+        System.out.println("Commands:");
         System.out.println("Commands:");
         System.out.println("GO <direction>  - Move in the specified direction (e.g., 'go north', 'go west'). You can also use N, S, E, and W.");
         System.out.println("LOOK            - Take another look around the room.");
         System.out.println("TAKE <item>     - Pick up an object from a room (e.g., 'take club').");
         System.out.println("DROP <item>     - Drop an item inside a room (e.g., 'drop club').");
+        System.out.println("EAT <item>      - Consume an item in your inventory for health (e.g., 'eat apple').");
+        System.out.println("EQUIP <weapon>  - Equips a weapon from your inventory (e.g., 'equip AK-47");
         System.out.println("INVENTORY       - View items in your inventory.");
         System.out.println("EXIT            - Exit the program.");
-        System.out.println("HELP            - Press 'Help' or 'H' to see all controls.");
     }
 
     public void exit() {

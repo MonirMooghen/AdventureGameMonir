@@ -23,7 +23,7 @@ public class Map {
         //adder et item direkte
         room1.addItem(new Item("torch", "A long torch"));
         room1.addItem(new Food("banana", "A healthy looking banana", 10));
-        room1.addItem(new RangedWeapon("AK-47", "An AK-47, a military level machine gun with a few rounds of ammo left", -15, 6));
+        room1.addItem(new RangedWeapon("AK-47", "An AK-47, a military level machine gun with a few rounds of ammo left", -15, 2));
         room1.addItem(new MeleeWeapon("sword", "a long sword with a golden handle", -20));
 
         // room 2

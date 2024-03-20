@@ -76,4 +76,8 @@ public class Adventure {
     public ReturnMessage equipWeapon(String shortName) {
         return player.equipWeapon(shortName);
     }
+
+    public ReturnMessage attack(){
+        return player.attack();
+    }
 }

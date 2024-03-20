@@ -4,16 +4,10 @@ public class RangedWeapon extends Weapon {
         super(shortName, longName, damage, true);
         this.ammo = ammo;
     }
+
     @Override
-    public int getAmmo() {
+    public int remainingUses(){
         return ammo;
-    }
-    public boolean hasAmmo(){
-        if (ammo<0) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     // -- betyder -1;

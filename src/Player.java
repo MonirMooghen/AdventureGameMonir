@@ -141,12 +141,13 @@ public class Player {
         }
     }
 
-    public ReturnMessage equipWeapon(String shortName){
+    public ReturnMessage equipWeapon(String shortName) {
         Item item = findItemInInventory(shortName);
+        //Leder efter et våben i inventory
         if (item == null) {
             return ReturnMessage.NOT_FOUND;
         } else if (item instanceof Weapon) {
-            if (((Weapon) item).hasAmmo) {
+            if (((Weapon) item).isRangedWeapon) {
                 currentWeapon = (Weapon) item;
                 inventory.remove(item);
                 return ReturnMessage.OK_AMMO;
@@ -159,4 +160,21 @@ public class Player {
             return ReturnMessage.NOT_OK;
         }
     }
-}
+
+    public ReturnMessage attack() {
+        if (currentWeapon == null) { //Hvis man ikke har equipped våben
+            return ReturnMessage.NOT_FOUND;
+        }
+        if (currentWeapon.isRangedWeapon) {
+            if (currentWeapon.remainingUses() > 0) {
+                currentWeapon.useWeapon();
+                return ReturnMessage.OK_AMMO;
+            } else {
+                return ReturnMessage.NOT_OK;
+                //sout "Der er ikke mere ammo i dit våben"
+            }
+        } else {
+            return ReturnMessage.OK; //hvis man har et mellee weapon
+        }
+        }
+    }
